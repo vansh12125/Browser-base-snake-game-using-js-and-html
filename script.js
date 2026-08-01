@@ -2,15 +2,23 @@ const model = document.querySelector("#modal");
 const modelContent = document.querySelector("#modal-content");
 
 (function () {
-  function handleStart(e) {
-    if (e.code === "Space" || e.code === "Enter") {
-      model.classList.remove("active");
-      makeGrid();
-      initialieSnakeAndFood();
-      removeEventListener("keydown", handleStart);
-    }
+  function startGame() {
+    model.classList.remove("active");
+    makeGrid();
+    initialieSnakeAndFood();
+
+    window.removeEventListener("keydown", handleStart);
+    model.removeEventListener("click", startGame);
+    model.removeEventListener("touchstart", startGame);
   }
+
+  function handleStart() {
+    startGame();
+  }
+
   window.addEventListener("keydown", handleStart);
+  model.addEventListener("click", startGame);
+  model.addEventListener("touchstart", startGame);
 })();
 
 const mainHtmlGrid = document.querySelector("#main-grid");
