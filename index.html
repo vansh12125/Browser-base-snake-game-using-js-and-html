@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="assets/site-icon.png" type="image/x-icon">
+  </head>
+
+  <body>
+    <main>
+      <section id="modal" class="active">
+        <div id="modal-content">
+          <h1>Welcome To Snake Game</h1>
+          <h4>Press Enter or space to start game</h4>
+        </div>
+      </section>
+      <nav id="navbar">
+        <div class="info-cards">
+          <h2>High Score: <span id="high-score">0</span></h2>
+        </div>
+        <div class="info-cards restart-btn-nav">
+          <button>Restart</button>
+        </div>
+        <div class="info-cards">
+          <h2>Score: <span id="score">0</span></h2>
+        </div>
+      </nav>
+      <section id="section">
+        <div id="main-grid"></div>
+      </section>
+      <section id="movement-btn-section">
+        <button class="movement-btn" id="up-btn">⬆</button>
+
+        <div id="left-right">
+          <button class="movement-btn" id="left-btn">⬅</button>
+          <button class="movement-btn" id="right-btn">➡</button>
+        </div>
+
+        <button class="movement-btn" id="down-btn">⬇</button>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

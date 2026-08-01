@@ -1,0 +1,258 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  user-select: none;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  /* overflow: hidden; */
+}
+
+body {
+  background: #181819;
+  color: #fff;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+#navbar {
+  height: 80px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+#section {
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  /* overflow: hidden; */
+}
+
+.info-cards {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  height: 50px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#main-grid {
+  width: min(calc(100vw - 32px), calc(100vh - 112px));
+  aspect-ratio: 1 / 1;
+  display: grid;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  overflow: hidden;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+}
+
+.block {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+
+.food {
+  background-image: url("assets/food.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.snake {
+  position: relative;
+  z-index: -1;
+  background: radial-gradient(circle at 35% 35%, #43d854, #0b6b1b);
+  border-radius: 35%;
+  overflow: hidden;
+}
+
+.snake::after {
+  content: "";
+  position: absolute;
+  inset: 20%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+}
+
+.restart-btn-nav button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  font-size: x-large;
+  font-weight: bold;
+  transition: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+}
+
+.restart-btn-nav:hover {
+  transform: scale(1.03);
+  background: #3030326e;
+}
+
+#modal {
+ position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+
+#modal-content {
+  background: #222;
+  color: white;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  text-transform: capitalize;
+}
+
+#modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.snake-head {
+  position: relative;
+  background: linear-gradient(145deg, #7cfc00, #32cd32);
+  border-radius: 40%;
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.25);
+  z-index: -1;
+}
+
+.snake-head::before,
+.snake-head::after {
+  content: "";
+  position: absolute;
+  width: 18%;
+  height: 18%;
+  background: #fff;
+  border-radius: 50%;
+  top: 25%;
+}
+
+.snake-head::before {
+  left: 22%;
+}
+
+.snake-head::after {
+  right: 22%;
+}
+
+.snake-head::before {
+  box-shadow: inset 2px 2px 0 #000;
+}
+
+.snake-head::after {
+  box-shadow: inset -2px 2px 0 #000;
+}
+
+.hide-cursor {
+  cursor: none !important;
+}
+
+#movement-btn-section {
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.movement-btn {
+  padding: 4px 7px;
+  font-size: x-large;
+  font-weight: bolder;
+  background: none;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  outline: none;
+  border-radius: 14px;
+  height: 70px;
+  width: 150px;
+}
+
+#left-right{
+  display: flex;
+  gap: 40px;
+}
+
+@media (max-width: 768px) {
+  #navbar {
+    padding: 0 10px;
+  }
+
+  .info-cards {
+    width: 110px;
+    height: 40px;
+  }
+
+  .info-cards h2 {
+    font-size: 0.9rem;
+  }
+
+  #movement-btn-section {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .movement-btn {
+    width: 70px;
+    height: 70px;
+    font-size: 1rem;
+    border-radius: 16px;
+  }
+
+  #left-right {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .movement-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 0.9rem;
+  }
+
+  #left-right {
+    gap: 16px;
+  }
+
+  #movement-btn-section {
+    padding-bottom: 20px;
+  }
+}
